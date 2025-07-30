@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskQR - Organização por QR Codes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <style>
+    :root {
+      --primary: #6d28d9;
+      --secondary: #8b5cf6;
+      --accent: #a78bfa;
+      --light: #f5f3ff;
+      --dark: #1e293b;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+    
+    .task-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .qrcode-container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    
+    .premium-badge {
+      background: linear-gradient(45deg, #f59e0b, #f97316);
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="gradient-bg text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+        </svg>
+        <span class="text-xl font-bold">TaskQR</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="#" class="nav-link">Início</a>
+        <a href="#features" class="nav-link">Recursos</a>
+        <a href="#pricing" class="nav-link">Planos</a>
+        <a href="#" class="nav-link">Login</a>
+      </div>
+      <button class="md:hidden focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="gradient-bg text-white py-16 md:py-24">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 mb-8 md:mb-0">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Organize Tarefas com QR Codes Inteligentes</h1>
+        <p class="text-xl mb-8">A maneira mais moderna de gerenciar estudos, projetos e equipes usando tecnologia QR Code personalizável.</p>
+        <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
+          <button class="bg-white text-purple-700 font-semibold px-6 py-3 rounded-lg hover:bg-opacity-90 transition duration-300 shadow-lg">
+            Começar Agora
+          </button>
+          <button class="border-2 border-white text-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition duration-300">
+            Ver Demonstração
+          </button>
+        </div>
+      </div>
+      <div class="md:w-1/2 flex justify-center">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/97393a2a-b2af-402f-8e83-460c8cb5da73.png" alt="Ilustração de um smartphone exibindo um QR Code com ícones de tarefas ao redor representando diferentes tipos de conteúdo educacional" class="rounded-lg shadow-2xl">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Recursos Exclusivos</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="task-card bg-purple-50 p-6 rounded-xl transition duration-300">
+          <div class="bg-purple-100 w-14 h-14 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">QR Codes Dinâmicos</h3>
+          <p class="text-gray-600">Gere QR Codes que levam a tarefas específicas, materiais de estudo ou instruções personalizadas.</p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="task-card bg-blue-50 p-6 rounded-xl transition duration-300">
+          <div class="bg-blue-100 w-14 h-14 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Multimídia Integrada</h3>
+          <p class="text-gray-600">Associe vídeo-aulas, áudios explicativos e documentos diretamente aos seus QR Codes.</p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="task-card bg-green-50 p-6 rounded-xl transition duration-300">
+          <div class="bg-green-100 w-14 h-14 rounded-full flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold mb-2">Checklists Interativas</h3>
+          <p class="text-gray-600">Crie listas de verificação que podem ser marcadas diretamente pelo QR Code.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QR Generator -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Gerador de QR Codes</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div class="space-y-4">
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Tipo de Conteúdo</label>
+            <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" id="content-type">
+              <option value="task">Tarefa/Atividade</option>
+              <option value="video">Videoaula (YouTube/Vimeo)</option>
+              <option value="audio">Áudio Explicativo</option>
+              <option value="checklist">Checklist/Lista</option>
+              <option value="document">Documento (Google Drive/Docs)</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Título</label>
+            <input type="text" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" id="task-title" placeholder="Título da Tarefa">
+          </div>
+          
+          <div>
+            <label class="block text-gray-700 font-medium mb-2">Detalhes</label>
+            <textarea class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" id="task-details" rows="4" placeholder="Descrição, links ou instruções..."></textarea>
+          </div>
+          
+          <button class="gradient-bg text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition duration-300 shadow-lg mt-4" id="generate-qr">
+            Gerar QR Code
+          </button>
+        </div>
+        
+        <div class="flex flex-col items-center">
+          <div class="qrcode-container mb-4">
+            <div id="qrcode" class="mx-auto"></div>
+          </div>
+          <button class="border-2 border-purple-600 text-purple-600 font-semibold px-6 py-2 rounded-lg hover:bg-purple-50 transition duration-300" id="download-qr">
+            Baixar QR Code
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-4">Planos de Assinatura</h2>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Escolha o plano que melhor se adapta às suas necessidades de organização</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Free Plan -->
+        <div class="border rounded-xl p-6 shadow-sm hover:shadow-md transition">
+          <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-2">Básico</h3>
+            <p class="text-gray-600">Para usuários que querem testar o sistema</p>
+          </div>
+          <div class="mb-6">
+            <span class="text-4xl font-bold">Gratuito</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Até 10 QR Codes
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Links básicos
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Sem análises
+            </li>
+          </ul>
+          <button class="w-full border-2 border-purple-600 text-purple-600 font-semibold px-4 py-2 rounded-lg hover:bg-purple-50 transition duration-300">
+            Começar Gratuitamente
+          </button>
+        </div>
+        
+        <!-- Premium Plan -->
+        <div class="border rounded-xl p-6 shadow-md border-purple-600 relative transform scale-105">
+          <div class="absolute top-0 right-0 bg-purple-600 text-white px-3 py-1 rounded-bl-xl rounded-tr-xl text-sm font-semibold">
+            Popular
+          </div>
+          <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-2">Premium</h3>
+            <p class="text-gray-600">Para estudantes e professores</p>
+          </div>
+          <div class="mb-6">
+            <span class="text-4xl font-bold">R$ 19,90</span>
+            <span class="text-gray-500">/mês</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              QR Codes ilimitados
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Multimídia completa
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Análises básicas
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Templates personalizados
+            </li>
+          </ul>
+          <button class="w-full gradient-bg text-white font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition duration-300 shadow-md">
+            Assinar Plano
+          </button>
+        </div>
+        
+        <!-- VIP Plan -->
+        <div class="border rounded-xl p-6 shadow-sm hover:shadow-md transition">
+          <div class="mb-6">
+            <h3 class="text-xl font-semibold mb-2">VIP Empresas</h3>
+            <p class="text-gray-600">Para equipes e instituições</p>
+          </div>
+          <div class="mb-6">
+            <span class="text-4xl font-bold">R$ 99,90</span>
+            <span class="text-gray-500">/mês</span>
+          </div>
+          <ul class="space-y-3 mb-8">
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              QR Codes ilimitados
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Multimídia completa
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Análises avançadas
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Suporte prioritário
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Usuários múltiplos
+            </li>
+            <li class="flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+              Kits físicos personalizados
+            </li>
+          </ul>
+          <button class="w-full border-2 border-purple-600 text-purple-600 font-semibold px-4 py-2 rounded-lg hover:bg-purple-50 transition duration-300">
+            Fale Conosco
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg p-8 max-w-md w-full">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-2xl font-bold text-gray-800">Entrar no TaskQR</h3>
+        <button id="close-login-modal" class="text-gray-500 hover:text-gray-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      
+      <form id="login-form">
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-2">E-mail</label>
+          <input type="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+        </div>
+        
+        <div class="mb-6">
+          <label class="block text-gray-700 mb-2">Senha</label>
+          <input type="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" required>
+        </div>
+        
+        <button type="submit" class="w-full gradient-bg text-white font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition duration-300 mb-4">
+          Entrar
+        </button>
+        
+        <div class="text-center text-sm">
+          <a href="#" class="text-purple-600 hover:underline">Esqueceu sua senha?</a>
+          <p class="mt-2">Não tem uma conta? <a href="#" class="text-purple-600 hover:underline">Cadastre-se</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <h4 class="text-lg font-semibold mb-4">TaskQR</h4>
+          <p class="text-gray-400">A plataforma mais moderna para organização de tarefas e estudos usando QR Codes personalizados.</p>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Início</a></li>
+            <li><a href="#features" class="text-gray-400 hover:text-white transition">Recursos</a></li>
+            <li><a href="#pricing" class="text-gray-400 hover:text-white transition">Planos</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Suporte</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Contato</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Termos de Uso</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Política de Privacidade</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Redes Sociais</h4>
+          <div class="flex space-x-4">
+            <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-700 transition">
+              <span class="sr-only">Facebook</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
+              </svg>
+            </a>
+            <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-700 transition">
+              <span class="sr-only">Instagram</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+            <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-700 transition">
+              <span class="sr-only">Twitter</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p>© 2023 TaskQR. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // QR Code Generator
+    document.getElementById('generate-qr').addEventListener('click', function() {
+      const contentType = document.getElementById('content-type').value;
+      const title = document.getElementById('task-title').value;
+      const details = document.getElementById('task-details').value;
+      
+      if (!title) {
+        alert('Por favor, insira um título para a tarefa.');
+        return;
+      }
+      
+      let qrContent = `Tarefa: ${title}\n`;
+      
+      switch(contentType) {
+        case 'video':
+          qrContent += `Tipo: Videoaula\nDescrição: ${details}\n\nAcesse nossa playlist: https://youtube.com/taskqr`;
+          break;
+        case 'audio':
+          qrContent += `Tipo: Áudio Explicativo\nDescrição: ${details}\n\nEscute o áudio: https://drive.google.com/taskqr/audio`;
+          break;
+        case 'checklist':
+          qrContent += `Tipo: Checklist\nItens:\n${details.replace(/\n/g, '\n- ')}\n\nAcesse a checklist completa: https://docs.google.com/taskqr/checklist`;
+          break;
+        case 'document':
+          qrContent += `Tipo: Documento\nDescrição: ${details}\n\nAcesse o documento: https://drive.google.com/taskqr/document`;
+          break;
+        default:
+          qrContent += `Descrição: ${details}\n\nAcesse mais detalhes: https://app.taskqr.com/task`;
+      }
+      
+      // Clear previous QR Code
+      document.getElementById('qrcode').innerHTML = '';
+      
+      // Generate new QR Code
+      new QRCode(document.getElementById('qrcode'), {
+        text: qrContent,
+        width: 200,
+        height: 200,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    });
+    
+    // Download QR Code
+    document.getElementById('download-qr').addEventListener('click', function() {
+      const qrContainer = document.getElementById('qrcode');
+      if (qrContainer.children.length === 0) {
+        alert('Gere um QR Code primeiro!');
+        return;
+      }
+      
+      const canvas = qrContainer.querySelector('canvas');
+      const link = document.createElement('a');
+      link.download = 'taskqr-code.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+    
+    // Login Modal
+    document.querySelector('a[href="#"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('login-modal').classList.remove('hidden');
+    });
+    
+    document.getElementById('close-login-modal').addEventListener('click', function() {
+      document.getElementById('login-modal').classList.add('hidden');
+    });
+    
+    // Form submission
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Login enviado com sucesso! (Funcionalidade simulada)');
+      document.getElementById('login-modal').classList.add('hidden');
+    });
+    
+    // Smooth scrolling for links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Responsive navbar toggle (for mobile)
+    document.querySelector('button.md\\:hidden').addEventListener('click', function() {
+      const navLinks = document.querySelector('.hidden.md\\:flex');
+      navLinks.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
+
